@@ -1,0 +1,21 @@
+{
+  "name": "savvy-docker-node",
+  "version": "1.0.0",
+  "description": "Serverless container for system runtime based on Node",
+  "scripts": {
+    "build:main": "docker build -t anatidae/savvy-server-node:1.0.0 .",
+    "BREAK:prebuild:test": "npm run build:main",
+    "build:test": "docker build -t savvy-server-test -f testing.Dockerfile .",
+    "predocker:test": "npm run build:test",
+    "docker:test": "docker run savvy-server-test",
+    "predocker:publish": "npm run build:main",
+    "docker:publish": "docker push anatidae/savvy-server-node:1.0.0",
+    "test": "jest --verbose"
+  },
+  "author": "Brian McBride <Brian-McBride@user.noreply.github.com>",
+  "license": "MIT",
+  "dependencies": {
+    "jest": "^26.1.0",
+    "pdf-fill-form": "^5.0.1"
+  }
+}
